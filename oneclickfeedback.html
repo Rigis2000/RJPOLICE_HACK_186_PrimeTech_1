@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Police Station Feedback</title>
+
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #ff9933;
+    }
+
+    .container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .feedback-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .options {
+        margin-top: 20px;
+    }
+
+    .option {
+        background-color: #138808;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .RadioButtons {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+        .dropdown {
+            margin-top: 20px;
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="feedback-box">
+            <h1>What is your feedback for your nearest police station?</h1>
+            <div class="dropdown">
+                <label for="station">Select Police Station:</label>
+                <select id="station" name="station">
+                </select>
+            </div>
+        </div>
+    </div>
+
+            <div class="options">
+                <form class="options-form" action="oneclickfeedback_connection.php" method="post" onsubmit="return submitForm()">
+                    <div class="RadioButtons">
+                        <input class="RadioButtons" type="radio" id="Good" value="good" name="feedback" required>
+                        <label for="good">Good</label><br>
+                        <input class="RadioButtons" type="radio" id="neutral" value="neutral" name="feedback" required>
+                        <label for="neutral">Neutral</label><br>
+                        <input class="RadioButtons" type="radio" id="bad" value="bad" name="feedback" required>
+                        <label for="bad">Bad</label><br>
+                        <input type="hidden" id="selectedStationID" name="stationID">
+                        <button type="submit" class="option">Submit</button>
+                    </div>
+            
+                    
+                </form>
+            </div>
+            
+            
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'oneclickfeedback_stations.php',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        $.each(response.stations, function (key, value) {
+                            $('#station').append('<option value="' + value.station_id + '">' + value.name + '</option>');
+                        });
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('Station Fetching Error');
+                    console.error(error);
+                }
+            });
+        });
+
+        function submitForm() {
+            var selectedStationID = $('#station').val();
+            var feedback = $('input[name="feedback"]:checked').val();
+
+            if (!selectedStationID || !feedback) {
+                alert('Please select both a police station and feedback.');
+                return false;
+            }
+
+            $('#selectedStationID').val(selectedStationID);
+
+            if (!sessionStorage.getItem('submitted')) {
+                var formData = $('.options-form').serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'oneclickfeedback_connection.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            alert(response.message);
+                            sessionStorage.setItem('submitted', 'true');
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Feedback Submission Error');
+                        console.error(error);
+                    }
+                });
+            } else {
+                alert('Feedback already submitted for the current user.');
+            }
+
+            return false;
+        }
+
+</script>
+
+</body>
+
+</html>
