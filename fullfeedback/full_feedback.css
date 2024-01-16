@@ -145,7 +145,6 @@ body {
     font-weight: 700;
 }
 
-/* reset input */
 .form__field:required,
 .form__field:invalid {
     box-shadow: none;
@@ -322,23 +321,6 @@ input[type="submit"]:hover {
     background-color: rgba(255, 0, 0, 0.0);
     color: #ffffff;
 }
-
-/* #name {
-    width: 80%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    resize: none;
-}
-
-#name:focus {
-    outline: none;
-    border-color: #007BFF;
-
-} */
 
 #overlay {
     display: none;
