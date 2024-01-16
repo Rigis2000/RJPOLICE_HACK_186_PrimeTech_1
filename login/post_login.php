@@ -8,7 +8,6 @@ if (!isset($_GET['session_id'])) {
 
 $sessionId = $_GET['session_id'];
 
-// $conn = new mysqli("localhost", "id21716174_root","Hello@123","id21716174_pfs");
 $conn = new mysqli("localhost", "root","","pfsnew");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -540,11 +539,9 @@ $stmt->execute();
                 });
             }
 
-            // Define a variable to store the reference to the chart
             var lineChart;
 
             function createLineChart(selectedStationId) {
-                // Destroy the previous chart if it exists
                 if (lineChart) {
                     lineChart.destroy();
                 }
@@ -556,11 +553,8 @@ $stmt->execute();
                         data: { station_id: selectedStationId },
                         success: function (dataResponse) {
                             if (dataResponse.status === 'success') {
-                                // Handle the data
                                 if (dataResponse.data && dataResponse.data.length > 0) {
-                                    // Extract timestamps, good, and bad values from the dataArray
                                     var timestamps = dataResponse.data.map(function (row) {
-                                        // Convert the timestamp to a JavaScript Date object
                                         return new Date(row.timestamp);
                                     });
 
@@ -572,13 +566,12 @@ $stmt->execute();
                                         return row.bad;
                                     });
 
-                                    // Create a line chart using Chart.js
                                     var ctx = document.getElementById('lineChart').getContext('2d');
 
                                     lineChart = new Chart(ctx, {
                                         type: 'line',
                                         data: {
-                                            labels: timestamps, // X-axis labels
+                                            labels: timestamps, 
                                             datasets: [
                                                 {
                                                     label: 'Good Values',
@@ -599,8 +592,8 @@ $stmt->execute();
                                                 x: {
                                                     type: 'time',
                                                     time: {
-                                                        unit: 'hour', // Display time in minutes
-                                                        tooltipFormat: 'h:mm a', // Customize the time unit as needed
+                                                        unit: 'hour', 
+                                                        tooltipFormat: 'h:mm a',
                                                     }
                                                 },
                                                 y: {
@@ -629,11 +622,8 @@ $stmt->execute();
                         data: { station_id: selectedStationId },
                         success: function (dataResponse) {
                             if (dataResponse.status === 'success') {
-                                // Handle the data
                                 if (dataResponse.data && dataResponse.data.length > 0) {
-                                    // Extract timestamps, good, and bad values from the dataArray
                                     var timestamps = dataResponse.data.map(function (row) {
-                                        // Convert the timestamp to a JavaScript Date object
                                         return new Date(row.timestamp);
                                     });
 
@@ -645,13 +635,12 @@ $stmt->execute();
                                         return row.bad;
                                     });
 
-                                    // Create a line chart using Chart.js
                                     var ctx = document.getElementById('lineChart').getContext('2d');
 
                                     lineChart = new Chart(ctx, {
                                         type: 'line',
                                         data: {
-                                            labels: timestamps, // X-axis labels
+                                            labels: timestamps,
                                             datasets: [
                                                 {
                                                     label: 'Good Values',
@@ -672,8 +661,8 @@ $stmt->execute();
                                                 x: {
                                                     type: 'time',
                                                     time: {
-                                                        unit: 'hour', // Display time in minutes
-                                                        tooltipFormat: 'h:mm a', // Customize the time unit as needed
+                                                        unit: 'hour', 
+                                                        tooltipFormat: 'h:mm a',
                                                     }
                                                 },
                                                 y: {
@@ -782,9 +771,7 @@ $stmt->execute();
                 updateRecord();
             });
 
-            // ... existing code ...
 
-            // Function to send sum of good tags and bad tags for all stations
             function updateRecord() {
                 var totalSumGood = 0;
                 var totalSumBad = 0;
@@ -792,14 +779,13 @@ $stmt->execute();
 
                 $.ajax({
                     type: 'GET',
-                    url: 'stations.php', // Replace with your endpoint to fetch station data
+                    url: 'stations.php',
                     dataType: 'json',
                     success: function (stationResponse) {
                         if (stationResponse.status === 'success' && stationResponse.stations.length > 0) {
                             var totalStations = stationResponse.stations.length;
 
                             $.each(stationResponse.stations, function (index, station) {
-                                // For each station, call the fullFeedbackAnalysis function
                                 var selectedStationId = station.station_id;
                                 $.ajax({
                                     type: 'POST',
@@ -851,7 +837,6 @@ $stmt->execute();
                                             totalSumGood += totalGoodValue;
                                             totalSumBad += totalBadValue;
 
-                                            // Make an AJAX request to send data to updateRecord.php
                                             $.ajax({
                                                 type: 'POST',
                                                 url: 'updateRecord.php',
@@ -862,15 +847,12 @@ $stmt->execute();
                                                     totalBadValue: totalBadValue
                                                 },
                                                 success: function (updateResponse) {
-                                                    // Handle the response from the server
                                                     console.log(updateResponse);
 
-                                                    // Increment the processed stations counter
                                                     processedStations++;
 
-                                                    // Check if the current station is the last one
                                                     if (processedStations === totalStations) {
-                                                        // Make an additional AJAX request for station_id = 0
+
                                                         sendTotalSum();
                                                     }
                                                 },
@@ -896,7 +878,6 @@ $stmt->execute();
                     }
                 });
 
-                // Function to send totalSumGood and totalSumBad with station_id = 0
                 function sendTotalSum() {
                     $.ajax({
                         type: 'POST',
@@ -907,7 +888,6 @@ $stmt->execute();
                             totalBadValue: totalSumBad
                         },
                         success: function (updateResponse) {
-                            // Handle the response from the server
                             console.log(updateResponse);
                         },
                         error: function (xhr, status, error) {
@@ -919,7 +899,6 @@ $stmt->execute();
             }
 
 
-            // ... existing code ...
         });
     </script>
 </body>

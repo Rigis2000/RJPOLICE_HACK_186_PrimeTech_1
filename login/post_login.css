@@ -113,7 +113,6 @@ input {
 
 .station-section.active .buttons {
     display: inline;
-    /* Show buttons when section is active */
 }
 
 #station_section {
@@ -377,7 +376,6 @@ select {
 
 @media screen and (max-width: 1366px) {
     body {
-        /* Decrease size by 30% */
         transform: scale(0.7);
         transform-origin: top left;
     }

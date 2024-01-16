@@ -1,18 +1,13 @@
 <?php
 
-// Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if 'action' is set in the POST data
     if (isset($_POST['action'])) {
-        // $conn = new mysqli("localhost", "id21716174_root","Hello@123","id21716174_pfs");
         $conn = new mysqli("localhost", "root","","pfsnew");
 
-        // Check the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Perform the corresponding query based on the 'action'
         if ($_POST['action'] === 'avg') {
             $query = "SELECT
                         AVG(good) AS average_good,
@@ -49,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(['error' => 'Invalid action']);
         }
 
-        // Close the database connection
         $conn->close();
     } else {
         echo json_encode(['error' => 'Action not set']);
