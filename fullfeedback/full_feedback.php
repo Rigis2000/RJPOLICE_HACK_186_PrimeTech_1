@@ -1,6 +1,5 @@
 <?php
 
-// $conn = new mysqli("localhost", "id21716174_root","Hello@123","id21716174_pfs");
 $conn = new mysqli("localhost", "root","","pfsnew");
 
 if ($conn->connect_error) {
