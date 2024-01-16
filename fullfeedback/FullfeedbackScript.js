@@ -22,10 +22,8 @@ var selectedTagsArray = [];
 
 $(document).ready(function () {
     
-    // Assuming your PHP script for fetching FeedbackTags is named FeedbackTags.php
     var feedbackTagsUrl = 'FeedbackTags.php';
     
-    // Fetch and populate initial dropdown options
     $.ajax({
         type: 'GET',
         url: feedbackTagsUrl,
@@ -45,7 +43,6 @@ $(document).ready(function () {
         }
     });
 
-    // Handle click event on "Add Tag" button
     $('#addTagButton').on('click', function () {
         var selectedTagId = $('#feedbackTag').val();
         var selectedTagName = $('#feedbackTag option:selected').text();
@@ -53,30 +50,25 @@ $(document).ready(function () {
         if (selectedTagId && selectedTagName) {
             selectedTagsArray.push(selectedTagName);
             
-            // Create a button for the selected tag
             var tagButton = '<button class="tagButton" data-tag-id="' + selectedTagId + '">' +selectedTagName + '</button>';
             
-            // Append the button to the selectedTags div
             $('#selectedTags').append(tagButton);
 
-            // Remove the selected tag from the dropdown
+
             $('#feedbackTag option[value="' + selectedTagId + '"]').remove();
         }
     });
 
-    // Handle click event on dynamically created tag buttons
     $(document).on('click', '.tagButton', function () {
         var selectedTagId = $(this).data('tag-id');
         var selectedTagName = $(this).text();
 
-        // Remove the button from the selectedTags div
         $(this).remove();
 
         selectedTagsArray = selectedTagsArray.filter(function (tagName) {
             return tagName !== selectedTagName;
         });
 
-        // Add the selected tag back to the dropdown
         $('#feedbackTag').append('<option value="' + selectedTagId + '">' + selectedTagName + '</option>');
     });
 });
@@ -94,7 +86,7 @@ function submitForm() {
         var formData = {
             stationID: selectedStationID,
             feedback: feedback,
-            selectedTags: selectedTagsArray  // Include selected tags in formData
+            selectedTags: selectedTagsArray
         };
         console.log(selectedTagsArray);
         $.ajax({
