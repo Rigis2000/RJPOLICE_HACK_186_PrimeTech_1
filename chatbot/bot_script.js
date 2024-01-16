@@ -76,7 +76,6 @@ const generateResponse = (chatElement,userMessage) => {
 
 const handleResponseButtonClick = (rmbtn, chatbox, response) => {
     const newChatLi = createChatLi("Thinking...", "incoming");
-    //const buttonsContainer = chatbox.querySelector(".bot-buttons");
     let newButtonsHTML = "";
     if (response) {
         switch (response.toLowerCase()) {
@@ -95,8 +94,6 @@ const handleResponseButtonClick = (rmbtn, chatbox, response) => {
                     newChatLi.querySelector("p").appendChild(link);
                 }, 500);
                 break;
-            // case "one click feedback":
-            //     setTimeout(()=>{newChatLi.querySelector("p").textContent = "Provide feedback with just one click! We value your opinion.";},500); break;
             case "bot commands":
                 setTimeout(()=>{newChatLi.querySelector("p").textContent = "Sure, there are number of commands you can try here, these are:\nHelp\nSupport\nNavigation\nBot commands";},500); break;
             case "home":
