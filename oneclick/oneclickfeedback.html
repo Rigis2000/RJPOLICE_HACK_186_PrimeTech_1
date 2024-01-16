@@ -84,7 +84,7 @@
                     success: function (response) {
                         if (response.status === 'success') {
                             alert(response.message);
-                            // sessionStorage.setItem('submitted', 'true');
+                            sessionStorage.setItem('submitted', 'true');
                         } else {
                             alert('Error: ' + response.message);
                         }
