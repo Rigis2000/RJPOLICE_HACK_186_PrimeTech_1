@@ -94,7 +94,6 @@ h2 {
 .feedback-btn:hover {
     background-color: rgba(255, 0, 0, 0.0);
     color: #ffffff;
-    /* font-weight: bold; */
 }
 
 .feedback-btn1{
@@ -174,8 +173,8 @@ h2 {
 }
 
 .feedback-box-section.enlarged {
-    width: 600px; /* Adjust the width as needed */
-    height: 400px; /* Adjust the height as needed */
+    width: 600px;
+    height: 400px; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     transform: scale(1.2);
     z-index: 1;
@@ -326,19 +325,19 @@ section:hover{
 
     .feedback-box-section {
         display: flex;
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-        text-align: center; /* Center the content */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     .enlarge-button {
-        max-width: 100%; /* Adjust the button width */
+        max-width: 100%;
         box-sizing: border-box;
     }
 
     .feedback-box-section.enlarged {
-        width: 90%; /* Adjust the width as needed */
-        height: 90%; /* Adjust the height as needed */
+        width: 90%; 
+        height: 90%;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         transform: scale(1.2);
         z-index: 1;
