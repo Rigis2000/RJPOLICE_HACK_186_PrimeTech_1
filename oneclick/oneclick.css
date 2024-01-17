@@ -7,7 +7,6 @@ body {
     background-size: cover;
     align-items: center;
     height: 100vh;
-    /* background: #ff9933; */
 }
 
 .container {
@@ -30,16 +29,6 @@ body {
 .options {
     margin-top: 20px;
 }
-
-/* .option {
-    background-color: #138808;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 5px;
-    cursor: pointer;
-} */
 .option{
     color: #000000;
     background-color: #fff;
