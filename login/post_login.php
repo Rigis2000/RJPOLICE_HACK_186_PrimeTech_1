@@ -551,11 +551,9 @@ $stmt->execute();
                 });
             }
 
-            // Define a variable to store the reference to the chart
             var lineChart;
 
             function createLineChart(selectedStationId) {
-                // Destroy the previous chart if it exists
                 if (lineChart) {
                     lineChart.destroy();
                 }
