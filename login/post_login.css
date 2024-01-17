@@ -88,9 +88,6 @@ body {
 
 #add-delete {
     padding-top: 100px;
-    /* position: fixed;
-    left: 100px; */
-    /* z-index: 1; */
     height: auto;
     width: auto;
 }
@@ -152,7 +149,6 @@ input {
 
 .station-section.active .buttons {
     display: inline;
-    /* Show buttons when section is active */
 }
 
 #station_section {
@@ -376,9 +372,7 @@ select {
 }
 
 .feedback-entry{
-    /* max-width: 300px; */
     margin: 10px;
-    /* border-top: 1px solid #000000; */
     border-bottom: 1px solid #000000;
 
 }
