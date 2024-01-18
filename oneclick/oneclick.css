@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-image: url('../home/images/oneclickbackground.png');
+    background-size: cover;
+    align-items: center;
+    height: 100vh;
+    /* background: #ff9933; */
+}
+
+.container {
+    width: 70%;
+    text-align: center;
+}
+
+.feedback-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .feedback-box h1{
+    font-size: 40px;
+}
+
+.options {
+    margin-top: 20px;
+}
+
+/* .option {
+    background-color: #138808;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+} */
+.option{
+    color: #000000;
+    background-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 10px 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover{
+    color: #000000;
+    background-color: transparent;
+    border: 2px solid #000000;
+}
+
+.RadioButtons {
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.dropdown {
+    margin-top: 20px;
+}
+
+select {
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.toggle-button-cover {
+    display: table-cell;
+    position:fixed;
+    width: fit-content;
+    height: fit-content;
+    bottom: 600px;
+    left: 1000px;
+    box-sizing: border-box;
+}
+
+.button-cover {
+    height: 100px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px -8px #c5d6d6;
+    border-radius: 4px;
+}
+
+.button-cover:before {
+    counter-increment: button-counter;
+    content: counter(button-counter);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #d7e3e3;
+    font-size: 12px;
+    line-height: 1;
+    padding: 5px;
+}
+
+.button-cover,
+.knobs,
+.layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button {
+    position: relative;
+    top: 50%;
+    width: 74px;
+    height: 36px;
+    margin: -20px auto 0 auto;
+    overflow: hidden;
+}
+
+.checkbox {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs {
+    z-index: 2;
+}
+
+.layer {
+    width: 100%;
+    background-color: #ebf7fc;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.button.r,
+.button.r .layer {
+    border-radius: 100px;
+}
+
+#button-3 .knobs:before {
+    content: "EN";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 9px 4px;
+    background-color: #03a9f4;
+    border-radius: 50%;
+    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+}
+
+#button-3 .checkbox:active+.knobs:before {
+    width: 46px;
+    border-radius: 100px;
+}
+
+#button-3 .checkbox:checked:active+.knobs:before {
+    margin-left: -26px;
+}
+
+#button-3 .checkbox:checked+.knobs:before {
+    content: "HI";
+    left: 42px;
+    background-color: #f44336;
+}
+
+#button-3 .checkbox:checked~.layer {
+    background-color: #fcebeb;
+}
+
+@media (max-width: 800px){
+    .container{
+        width: 100%;
+    }
+
+    .toggle-button-cover {
+        bottom: 750px;
+        left: 250px;
+    }
+}
+
+@media (max-height: 700px){
+    .container{
+        width: 100%;
+    }
+
+    .toggle-button-cover {
+        bottom: 600px;
+        left: 250px;
+    }
+}

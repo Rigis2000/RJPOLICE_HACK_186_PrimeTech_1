@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="oneclick.css">
+    <link rel="stylesheet" href="bot_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="bot_script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Police Station Feedback</title>
+</head>
+
+<body>
+
+    <div class="toggle-button-cover">
+        <div id="button-3" class="button r">
+            <input class="checkbox" type="checkbox" onclick="changeText()">
+            <div class="knobs"></div>
+            <div class="layer"></div>
+        </div>
+        </div>
+
+    <div class="container">
+        <div class="feedback-box">
+            <h1 id="Change1">What is your feedback for your nearest police station?</h1>
+            <div class="dropdown">
+                <label for="station" id="Change2">Select Police Station:</label>
+                <select id="station" name="station">
+                </select>
+            </div>
+
+            <div class="options">
+                <form class="options-form" action="oneclickfeedback_connection.php" method="post"
+                    onsubmit="return submitForm()">
+                    <div class="RadioButtons">
+                        <input class="RadioButtons" type="radio" id="Good" value="good" name="feedback" required>
+                        <label for="good" id="Change3">Good</label><br>
+                        <input class="RadioButtons" type="radio" id="neutral" value="neutral" name="feedback" required>
+                        <label for="neutral" id="Change4">Neutral</label><br>
+                        <input class="RadioButtons" type="radio" id="bad" value="bad" name="feedback" required>
+                        <label for="bad" id="Change5">Bad</label><br>
+                        <input type="hidden" id="selectedStationID" name="stationID">
+                        <button type="submit" class="option">Submit</button><br><br>
+                        
+                    </div>
+                </form>
+                <a href="../fullfeedback/fullFeedback.html" id="full-link"><button class="option">Click here to provide Full Feedback</button></a>
+            </div>
+        </div>
+    </div>
+
+    <button class="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="chatbot">
+        <header>
+          <h2>Chatbot</h2>
+          <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br>How can I help you today?<br>Type "help" to recieve help, or type "support" to recieve support
+                </p>
+        
+              </li>
+          <div class="bot-buttons" id="botbtns">
+          </div>
+        </ul>
+        <div class="chat-input">
+          <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+          <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+      </div> 
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'oneclickfeedback_stations.php',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        $.each(response.stations, function (key, value) {
+                            $('#station').append('<option value="' + value.station_id + '">' + value.name + '</option>');
+                        });
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('Station Fetching Error');
+                    console.error(error);
+                }
+            });
+        });
+
+        function submitForm() {
+            var selectedStationID = $('#station').val();
+            var feedback = $('input[name="feedback"]:checked').val();
+
+            if (!selectedStationID || !feedback) {
+                alert('Please select both a police station and feedback.');
+                return false;
+            }
+
+            $('#selectedStationID').val(selectedStationID);
+
+            if (!sessionStorage.getItem('submitted')) {
+                var formData = $('.options-form').serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'oneclickfeedback_connection.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            alert(response.message);
+                            sessionStorage.setItem('submitted', 'true');
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Feedback Submission Error');
+                        console.error(error);
+                    }
+                });
+            } else {
+                alert('Feedback already submitted for the current user.');
+            }
+
+            return false;
+        }
+        function changeText() {
+          var checkbox = document.getElementById("button-3").querySelector(".checkbox");
+          var change1 = document.getElementById("Change1");
+          var change2 = document.getElementById("Change2");
+          var change3 = document.getElementById("Change3");
+          var change4 = document.getElementById("Change4");
+          var change5 = document.getElementById("Change5");
+          
+          if (checkbox.checked) {
+              change1.textContent = "आपके नजदीकी पुलिस स्टेशन के बारे में आपकी क्या प्रतिक्रिया है?";
+              change2.textContent = "पुलिस स्टेशन का चयन करें:";
+              change3.textContent = "अच्छा";
+              change4.textContent = "निष्पक्ष";
+              change5.textContent = "बुरा";
+            } else {
+              change1.textContent = "What is your feedback for your nearest police station?";
+              change2.textContent = "Select Police Station:";
+              change3.textContent = "Good";
+              change4.textContent = "Neutral";
+              change5.textContent = "Bad";
+          }
+      }
+    </script>
+
+</body>
+
+</html>
