@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Help!</title>
+  <link rel="stylesheet" href="help.css">
+  <link rel="stylesheet" href="bot_style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="bot_script.js" defer></script>
+</head>
+
+<body>
+    <div id="navigation">
+      <div id="logo-container">
+        <img src="../home/images/emblem1.png" alt="Logo 1">
+        <img src="../home/images/Logo.png" alt="Logo 2">
+      </div>
+      <div id="buttons-container">
+        <a href="../index.php" class="nav-link">Home</a>
+        <a href="../login/login.html" class="nav-link">Official Login</a>
+        <a href="help.html" class="nav-link">Help</a>
+      </div>
+      <div class="toggle-button-cover">
+        <div id="button-3" class="button r">
+          <input class="checkbox" type="checkbox" onclick="changeText()">
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+      </div>
+    </div>
+
+      <section class="main_sec">
+        <h1 id="change1">Frequently Asked Questions:</h1>
+        <ul>
+          <li><strong id="change2">How can I provide feedback through the bulk SMS system?</strong><br><br>
+            <div id="change3">
+              To submit feedback, simply click on the link provided in the SMS you receive, selecting your feedback. Your feedback is crucial in enhancing police-community relations.
+            </div>
+          </li><br><br>
+          <li><strong id="change4">Is the chatbot available 24/7 for assistance?</strong><br><br>
+            <div id="change5">
+              Yes, the chatbot is designed to be available round the clock. Feel free to interact with it anytime for queries, assistance, or feedback.
+            </div>
+          </li><br><br>
+          <li><strong id="change6">How secure is my feedback data?</strong><br><br>
+            <div id="change7">
+              We prioritize data security. All feedback data is encrypted and stored securely, accessible only to authorized personnel for analysis and improvement purposes.
+            </div>
+          </li><br><br>
+          <li><strong id="change8">Can I edit or retract my feedback once submitted?</strong><br><br>
+            <div id="change9">
+              Unfortunately, once feedback is submitted, it cannot be edited or retracted. This is to maintain the integrity and authenticity of the feedback received.
+            </div>
+          </li><br><br>
+          <li><strong id="change10">What kind of analysis does the admin dashboard provide?</strong><br><br>
+            <div id="change11">
+              The admin dashboard offers a comprehensive analysis of feedback trends, sentiment analysis, and other key metrics. It aids administrators in understanding community concerns and improving law enforcement strategies.
+            </div>
+          </li><br><br>
+          <li><strong id="change12">How can law enforcement use the feedback to improve services?</strong><br><br>
+            <div id="change13">
+              Feedback received is used for continuous improvement. Law enforcement reviews and analyzes the feedback to identify areas for enhancement, address community concerns, and optimize service delivery.
+            </div>
+          </li><br><br>
+          <li><strong id="change14">Is my identity kept confidential when providing feedback?</strong><br><br>
+            <div id="change15">
+              Yes, your identity is kept confidential. We prioritize user privacy, and feedback is collected anonymously to encourage open and honest communication.
+            </div>
+          </li><br><br>
+          <li><strong id="change16">Can I opt-out of receiving bulk SMS for feedback requests?</strong><br><br>
+            <div id="change17">
+              Yes, if you prefer not to receive feedback requests via SMS, you can opt-out by following the instructions provided in the SMS message or by contacting our support team.
+            </div>
+          </li><br><br>
+          <li><strong id="change18">How often should I expect to receive feedback requests?</strong><br><br>
+            <div id="change19">
+              The frequency of feedback requests may vary, but we aim to strike a balance between gathering valuable input and respecting your time. You may receive occasional requests to ensure a diverse range of perspectives.
+            </div>
+          </li><br><br>
+          <li><strong id="change20">How can I report technical issues or provide suggestions for system improvement?</strong><br><br>
+            <div id="change21">
+              We welcome your input! For technical issues or suggestions, please contact our support team through the chatbot or visit the support section on the admin dashboard. Your feedback helps us enhance the system for a better user experience.
+            </div>
+          </li><br><br>
+      </ul>
+      </section>
+      <button class="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="chatbot">
+        <header>
+          <h2>Chatbot</h2>
+          <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br>How can I help you today?<br>Type "help" to recieve help, or type "support" to recieve support
+                </p>
+        
+              </li>
+          <div class="bot-buttons" id="botbtns">
+          </div>
+        </ul>
+        <div class="chat-input">
+          <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+          <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+      </div>   
+      <script>
+        function changeText() {
+            var checkbox = document.getElementById("button-3").querySelector(".checkbox");
+            var change1 = document.getElementById("change1");
+            var change2 = document.getElementById("change2");
+            var change3 = document.getElementById("change3");
+            var change4 = document.getElementById("change4");
+            var change5 = document.getElementById("change5");
+            var change6 = document.getElementById("change6");
+            var change7 = document.getElementById("change7");
+            var change8 = document.getElementById("change8");
+            var change9 = document.getElementById("change9");
+            var change10 = document.getElementById("change10");
+            var change11 = document.getElementById("change11");
+            var change12 = document.getElementById("change12");
+            var change13 = document.getElementById("change13");
+            var change14 = document.getElementById("change14");
+            var change15 = document.getElementById("change15");
+            var change16 = document.getElementById("change16");
+            var change17 = document.getElementById("change17");
+            var change18 = document.getElementById("change18");
+            var change19 = document.getElementById("change19");
+            var change20 = document.getElementById("change20");
+            var change21 = document.getElementById("change21");
+            
+            if (checkbox.checked) {
+                change1.textContent = "अक्सर पूछे जाने वाले प्रश्नों:";
+                change2.textContent = "मैं बल्क एसएमएस प्रणाली के माध्यम से फीडबैक कैसे प्रदान कर सकता हूं?";
+                change3.textContent = "फीडबैक सबमिट करने के लिए, बस आपको प्राप्त एसएमएस में दिए गए लिंक पर क्लिक करें और अपना फीडबैक चुनें। पुलिस-सामुदायिक संबंधों को बेहतर बनाने में आपकी प्रतिक्रिया महत्वपूर्ण है।";
+                change4.textContent = "क्या चैटबॉट सहायता के लिए 24/7 उपलब्ध है?";
+                change5.textContent = "हाँ, चैटबॉट को चौबीसों घंटे उपलब्ध रहने के लिए डिज़ाइन किया गया है। प्रश्नों, सहायता या फीडबैक के लिए किसी भी समय बेझिझक इसके साथ बातचीत करें।";
+                change6.textContent = "मेरा फीडबैक डेटा कितना सुरक्षित है?";
+                change7.textContent = "हम डेटा सुरक्षा को प्राथमिकता देते हैं। सभी फीडबैक डेटा को एन्क्रिप्ट किया गया है और सुरक्षित रूप से संग्रहीत किया गया है, जो केवल विश्लेषण और सुधार उद्देश्यों के लिए अधिकृत कर्मियों के लिए ही पहुंच योग्य है।";
+                change8.textContent = "एक बार सबमिट करने के बाद क्या मैं अपना फीडबैक संपादित कर सकता हूं या वापस ले सकता हूं?";
+                change9.textContent = "दुर्भाग्य से, एक बार फीडबैक सबमिट हो जाने के बाद, इसे संपादित या वापस नहीं लिया जा सकता है। यह प्राप्त फीडबैक की अखंडता और प्रामाणिकता को बनाए रखने के लिए है।";
+                change10.textContent = "व्यवस्थापक डैशबोर्ड किस प्रकार का विश्लेषण प्रदान करता है?";
+                change11.textContent = "एडमिन डैशबोर्ड फीडबैक रुझान, भावना विश्लेषण और अन्य प्रमुख मेट्रिक्स का व्यापक विश्लेषण प्रदान करता है। यह प्रशासकों को सामुदायिक चिंताओं को समझने और कानून प्रवर्तन रणनीतियों में सुधार करने में सहायता करता है।";
+                change12.textContent = "कानून प्रवर्तन सेवाओं को बेहतर बनाने के लिए फीडबैक का उपयोग कैसे कर सकता है?";
+                change13.textContent = "प्राप्त फीडबैक का उपयोग निरंतर सुधार के लिए किया जाता है। कानून प्रवर्तन सुधार के क्षेत्रों की पहचान करने, सामुदायिक चिंताओं को दूर करने और सेवा वितरण को अनुकूलित करने के लिए फीडबैक की समीक्षा और विश्लेषण करता है।";
+                change14.textContent = "क्या फीडबैक देते समय मेरी पहचान गोपनीय रखी जाती है?";
+                change15.textContent = "हाँ, आपकी पहचान गोपनीय रखी जाती है। हम उपयोगकर्ता की गोपनीयता को प्राथमिकता देते हैं, और खुले और ईमानदार संचार को प्रोत्साहित करने के लिए गुमनाम रूप से फीडबैक एकत्र किया जाता है।";
+                change16.textContent = "क्या मैं फीडबैक अनुरोधों के लिए बल्क एसएमएस प्राप्त करने से ऑप्ट-आउट कर सकता हूं?";
+                change17.textContent = "हां, यदि आप एसएमएस के माध्यम से फीडबैक अनुरोध प्राप्त नहीं करना चाहते हैं, तो आप एसएमएस संदेश में दिए गए निर्देशों का पालन करके या हमारी सहायता टीम से संपर्क करके ऑप्ट-आउट कर सकते हैं।";
+                change18.textContent = "मुझे कितनी बार फीडबैक अनुरोध प्राप्त होने की उम्मीद करनी चाहिए?";
+                change19.textContent = "फीडबैक अनुरोधों की आवृत्ति भिन्न हो सकती है, लेकिन हमारा लक्ष्य मूल्यवान इनपुट एकत्र करने और आपके समय का सम्मान करने के बीच संतुलन बनाना है। आपको विविध प्रकार के दृष्टिकोण सुनिश्चित करने के लिए कभी-कभी अनुरोध प्राप्त हो सकते हैं।";
+                change20.textContent = "मैं तकनीकी समस्याओं की रिपोर्ट कैसे कर सकता हूँ या सिस्टम सुधार के लिए सुझाव कैसे दे सकता हूँ?";
+                change21.textContent = "हम आपके इनपुट का स्वागत करते हैं! तकनीकी समस्याओं या सुझावों के लिए, कृपया चैटबॉट के माध्यम से हमारी सहायता टीम से संपर्क करें या व्यवस्थापक डैशबोर्ड पर सहायता अनुभाग पर जाएँ। आपकी प्रतिक्रिया हमें बेहतर उपयोगकर्ता अनुभव के लिए सिस्टम को बेहतर बनाने में मदद करती है।";
+              } else {
+                change1.textContent = "Frequently Asked Questions:";
+                change2.textContent = "How can I provide feedback through the bulk SMS system?";
+                change3.textContent = "To submit feedback, simply click on the link provided in the SMS you receive, selecting your feedback. Your feedback is crucial in enhancing police-community relations.";
+                change4.textContent = "Is the chatbot available 24/7 for assistance?";
+                change5.textContent = "Yes, the chatbot is designed to be available round the clock. Feel free to interact with it anytime for queries, assistance, or feedback.";
+                change6.textContent = "How secure is my feedback data?";
+                change7.textContent = "We prioritize data security. All feedback data is encrypted and stored securely, accessible only to authorized personnel for analysis and improvement purposes.";
+                change8.textContent = "Can I edit or retract my feedback once submitted?";
+                change9.textContent = "Unfortunately, once feedback is submitted, it cannot be edited or retracted. This is to maintain the integrity and authenticity of the feedback received.";
+                change10.textContent = "What kind of analysis does the admin dashboard provide?";
+                change11.textContent = "The admin dashboard offers a comprehensive analysis of feedback trends, sentiment analysis, and other key metrics. It aids administrators in understanding community concerns and improving law enforcement strategies.";
+                change12.textContent = "How can law enforcement use the feedback to improve services?";
+                change13.textContent = "Feedback received is used for continuous improvement. Law enforcement reviews and analyzes the feedback to identify areas for enhancement, address community concerns, and optimize service delivery.";
+                change14.textContent = "Is my identity kept confidential when providing feedback?";
+                change15.textContent = "Yes, your identity is kept confidential. We prioritize user privacy, and feedback is collected anonymously to encourage open and honest communication.";
+                change16.textContent = "Can I opt-out of receiving bulk SMS for feedback requests?";
+                change17.textContent = "Yes, if you prefer not to receive feedback requests via SMS, you can opt-out by following the instructions provided in the SMS message or by contacting our support team.";
+                change18.textContent = "How often should I expect to receive feedback requests?";
+                change19.textContent = "The frequency of feedback requests may vary, but we aim to strike a balance between gathering valuable input and respecting your time. You may receive occasional requests to ensure a diverse range of perspectives.";
+                change20.textContent = "How can I report technical issues or provide suggestions for system improvement?";
+                change21.textContent = "We welcome your input! For technical issues or suggestions, please contact our support team through the chatbot or visit the support section on the admin dashboard. Your feedback helps us enhance the system for a better user experience.";
+              }
+      }
+    </script>
+</body>
